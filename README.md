@@ -38,7 +38,7 @@ mvn liquibase:rollback -Dliquibase.rollbackTag=1.0
 
 As a best practice, one change set should have only a single change in it. 
 Don't club sql statements in a single changeset.
-This helps with rollback in case of an issue with of of the changes.
+This helps with rollback in case of an issue with of the changes.
 
 **Implementing Liquibase on an existing DB**
 
