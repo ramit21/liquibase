@@ -36,6 +36,9 @@ Eg of rollback command:
 
 mvn liquibase:rollback -Dliquibase.rollbackTag=1.0
 
+As a best practice, one change set should have only a single change in it. 
+Don't club sql statements in a single changeset.
+This helps with rollback in case of an issue with of of the changes.
 
 **Implementing Liquibase on an existing DB**
 
@@ -45,6 +48,18 @@ Another approach is to create changelogs of historical tables.
 Then use changelogsync command to mark these old changelogs, so that they do not get executed by liquibase when app comes up.
 
 A third approach is to use 'liquibase generateChangeLog' command which automatically gneerates changelogs for existing db structure.
+But there are chances that some db changelogs might get skipped using this approach.
+
+**Changeset hash**
+
+Developers cannot change existing changelogs. Each changelog once executed gets a changeset hash
+stored as MD5SUM in DATABASECHANGELOG table. 
+If you change the changeset again, the hash changes.
+At time of running liquibase, any mismatch in the has is reported as error
+and the operation is not allowed.
+Although not encouraged, if you really need to update an existing changelog, then set the MD5SUM column as null in db.
+
+
 
 
 
