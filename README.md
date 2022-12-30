@@ -11,3 +11,7 @@ See the data inserted into H2 by Liquibase, by running this query in h2 console:
 
 select * from person;
 
+Notice 2 different ways of giving change logs under changes folder.
+First one creates table as configured in the changelog xml.
+Second one has changelog point to a sql file.
+
