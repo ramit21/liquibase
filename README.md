@@ -15,6 +15,14 @@ Notice 2 different ways of giving change logs under changes folder.
 First one creates table as configured in the changelog xml.
 Second one has changelog point to a sql file.
 
+**Project Structure**
+Note how we segregate Db related things in pom (H2, Liquibase, Data JPA dependencies),
+ entities, JPA repos and the Data source class in the data submodule, and include it as a dependency
+ in the application module. the service in app module auto wires the JPA repo.
+
+Also note how Hikari data pool is being created using application.properties. To point the application to
+actual DB , simply update the app properties.
+
 **Liquibase tables**
 
 Liquibase uses DATABASECHANGELOGLOCK table to ensure only once instance of 
