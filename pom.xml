@@ -20,6 +20,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<revision>1.0</revision>
+		<lombok.version>1.18.20</lombok.version>
 	</properties>
 	<modules>
 		<module>liquibase-app</module>

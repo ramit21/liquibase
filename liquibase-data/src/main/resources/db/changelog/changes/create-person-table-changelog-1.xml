@@ -5,9 +5,15 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-    <changeSet author="admin" id="1">
+    <changeSet author="admin" id="1-create-person-sequence">
+        <createSequence sequenceName="person-sequence" startValue="1" />
+        <rollback>
+            <dropSequence sequenceName="person"/>
+        </rollback>
+    </changeSet>
+    <changeSet author="admin" id="2-create-person-table">
         <createTable tableName="person">
-            <column autoIncrement="true" name="id" type="INT">
+            <column autoIncrement="true" name="id" type="BIGINT"> <!-- id field should be BIGINT, not INT -->
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="VARCHAR(255)">
@@ -19,4 +25,5 @@
             <dropTable tableName="person"/>
         </rollback>
     </changeSet>
+
 </databaseChangeLog>
