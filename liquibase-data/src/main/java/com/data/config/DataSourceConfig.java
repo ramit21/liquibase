@@ -3,6 +3,8 @@ package com.data.config;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.Value;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,7 +30,8 @@ import java.util.Properties;
         transactionManagerRef = "appTransactionManager",
         basePackages = {"com.data.repository"}
 )
-@Value
+@Getter
+@Setter
 public class DataSourceConfig extends HikariConfig {
 
     public static final String PERSISTENCE_UNIT_NAME = "app";

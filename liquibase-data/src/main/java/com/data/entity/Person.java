@@ -1,15 +1,16 @@
 package com.data.entity;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
-import lombok.Value;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "PERSON")
-@Value
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @ToString
 @EqualsAndHashCode
 public class Person {

@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 public class PersonController {
 
-    //@Autowired
+    @Autowired
     private PersonRepository repo;
 
     @GetMapping("/")
